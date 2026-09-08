@@ -32,7 +32,7 @@
   要り、それはこの library が持つべきデータではない（更新され続ける外部の
   表を、判断だけの純関数 repo に抱えると腐る）。ここが返すのは信号であって
   遮断ではないので、接尾辞比較の粗さは誤警報の側に倒れる。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [persona.core :as persona]))
 
 (def schema "persona.relay.v1")
@@ -40,7 +40,7 @@
 (defn- domain-of
   "アドレスの `@` 以降。アドレスでなければドメインそのものとして扱う。"
   [value]
-  (let [v (some-> value str str/trim str/lower-case not-empty)]
+  (let [v (some-> value str str/trim str/lower not-empty)]
     (when v (if-let [i (str/last-index-of v "@")] (subs v (inc i)) v))))
 
 (defn within?
@@ -104,7 +104,7 @@
   状態を書き換えないため —— 同じ 1 通について『どうするか』と『何を覚えるか』
   を別に決められる。"
   [dir address sender]
-  (let [address (some-> address str str/trim str/lower-case)
+  (let [address (some-> address str str/trim str/lower)
         root (persona/root-of dir address)
         from (domain-of sender)]
     (if (and root from (persona/persona-at dir address))

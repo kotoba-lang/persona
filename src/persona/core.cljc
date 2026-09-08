@@ -44,7 +44,7 @@
   `:persona/cap` を数として受け取り、超えたら理由を言って断るだけ。
   上限の根拠をこの ns が持つと、認証の強さと alias の数という無関係な 2 つの
   関心が 1 箇所に混ざる。"
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [word-id.core :as word-id]))
 
 (def schema "persona.core.v1")
@@ -62,14 +62,14 @@
    :persona.directory/burned #{}})
 
 (defn- normalize-address [a]
-  (some-> a str str/trim str/lower-case not-empty))
+  (some-> a str str/trim str/lower not-empty))
 
 (defn- normalize-party
   "相手の識別子。ドメインを想定するが、この ns は形を検査しない —— 何を
   『1 社』と数えるかは呼び出し側の判断（`example.com` と `shop.example.com`
   を同じと見るかは、この library には決められない）。"
   [p]
-  (some-> p str str/trim str/lower-case not-empty))
+  (some-> p str str/trim str/lower not-empty))
 
 (defn personas
   "この本体が持つ persona 全部（`:burned` を含む）。"
