@@ -1,7 +1,7 @@
-#!/usr/bin/env nbb
+#!/usr/bin/env kbb
 ;; ClojureScript 側でも同じテストを回す。
 ;;
-;;   nbb --classpath src:test:../word-id/src run-tests.cljk
+;;   kbb --backend sci --classpath src:test:../word-id/src run-tests.cljk
 ;;
 ;; 受信の振り分けは Cloudflare Worker（CLJS）で動き、一覧の UI も CLJS で
 ;; 動く。JVM で通ることはその証拠にならないので、両方で回す。

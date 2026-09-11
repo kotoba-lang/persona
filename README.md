@@ -111,8 +111,8 @@ repo に抱えると腐る。返るのは信号であって遮断ではないの
 ## テスト
 
 ```bash
-clojure -M:test                                                  # JVM
-nbb --classpath src:test:../word-id/src run-tests.cljk           # ClojureScript
+kbb -M:test                                                  # JVM
+kbb --backend sci --classpath src:test:../word-id/src run-tests.cljk           # ClojureScript
 ```
 
 受信の振り分けは Cloudflare Worker（CLJS）で動くので、両方で回す。
