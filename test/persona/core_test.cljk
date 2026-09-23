@@ -1,6 +1,6 @@
 (ns persona.core-test
   (:require [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is testing]]
+            [kotoba.test :refer [deftest is testing]]
             [persona.core :as persona]
             [word-id.english :as english]))
 

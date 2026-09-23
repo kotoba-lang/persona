@@ -1,5 +1,5 @@
 (ns persona.relay-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [persona.core :as persona]
             [persona.relay :as relay]
             [word-id.english :as english]))
